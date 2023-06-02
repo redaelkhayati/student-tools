@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecole Superieure De Techologie</title>
+    <script src="https://kit.fontawesome.com/448fdde26a.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Gloria+Hallelujah&family=Grape+Nuts&family=Inter:wght@300&family=Lato:ital,wght@0,700;1,400&family=Montserrat:wght@600&family=Pacifico&family=Patrick+Hand&family=Permanent+Marker&family=Poppins&display=swap');
+
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    :root {
+        --text-color: #3A3A3A;
+        --background-color: white;
+    }
+
+    .dark-mode{
+        --text-color: white;
+        --background-color: rgb(37, 37, 37);
+    }
+
+    body {
+        background-color: var(--background-color);
+    }
+
+    header {
+        height: 80px;
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    header .nav-logo {
+        width: 30%;
+        height: 100%;
+        float: left;
+        margin-left: 30px;
+    }
+
+    header .nav-logo img {
+        height: 100%;
+    }
+
+    header .nav-btn {
+        flex-basis: 40%;
+        margin-right: 40px;
+    }
+
+    .theme-btn{
+        margin-right: 10px;
+        float: right;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font-size: 25px;
+    }
+
+    .theme-btn:hover {
+        opacity: 0.9;
+    }
+
+    .theme-btn:active {
+        opacity: 0.8;
+    }
+
+    .container1 {
+        width: 90%;
+        margin: 0 auto 0;
+        padding-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .container1 .text-section-1 {
+        flex-basis: 55%;
+        display: flex;
+        flex-direction: column;
+        color: var(--text-color);
+    }
+
+    .container1 .text-section-1 .title-section-1 {
+        width: 100%;
+        font-size: 45px;
+        line-height: 46px;
+        margin-bottom: 15px;
+        font-weight: bolder;
+        color: var(--text-color);
+    }
+
+    .container1 .text-section-1 .title-section-1 span {
+        color: #4862FB;
+    }
+
+    .container1 .text-section-1 .paragrapg-section-1 {
+        font-size: 17px;
+        width: 85%;
+        color: var(--text-color);
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    .container1 .text-section-1 .login-btn,
+    .container1 .text-section-1 .sign-up-btn {
+        padding: 8px 38px;
+        font-size: 19px;
+        font-weight: 500;
+        margin-left: 15px;
+        background-color: var(--background-color);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .container1 .text-section-1 .sign-up-btn {
+        border: 2px solid rgb(97, 119, 255);
+        background-color: rgb(97, 119, 255);
+    }
+
+    .container1 .text-section-1 .login-btn {
+        border: 2px solid var(--text-color);
+        color: var(--text-color);
+    }
+
+    .container1 .text-section-1 .login-btn:hover {
+        background-color: rgb(97, 119, 255);
+        border: 2px solid rgb(97, 119, 255);
+    }
+
+    .container1 .image-section-1 {
+        flex-basis: 45%;
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .graduation {
+        position: absolute;
+        font-size: 60px;
+        top: calc(50% - 150px);
+        right: calc(40% - 150px);
+        animation: UPdown 5s linear infinite;
+        color: var(--text-color);
+    }
+
+    .calendar {
+        position: absolute;
+        font-size: 60px;
+        top: calc(60% - 150px);
+        left: calc(37% - 150px);
+        animation: UPdown 5s linear infinite;
+        color: #4862FB;
+    }
+
+    .cercle-design-1 {
+        position: absolute;
+        top: calc(50% - 150px);
+        right: calc(50% - 150px);
+        width: 300px;
+        height: 300px;
+        border-radius: 150px;
+        z-index: -1;
+        background-color: #C8CFFF;
+    }
+
+    .cercle-design-2 {
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        border-radius: 125px;
+        z-index: -2;
+        top: calc(70% - 150px);
+        right: calc(45% - 150px);
+        border: 2px dashed #4862FB;
+        animation: rotate 10s linear infinite;
+    }
+
+    .cercle-design-3 {
+        position: absolute;
+        top: calc(70% - 150px);
+        left: calc(40% - 150px);
+        width: 250px;
+        height: 250px;
+        border-radius: 150px;
+        z-index: -3;
+        border: 2px dashed var(--text-color);
+        animation: rotate 10s linear infinite;
+    }
+
+    .container2 {
+        width: 100%;
+        padding: 200px 0 250px;
+        background-image: url('images/Group 46.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container2 .image-sectio-2 {
+        flex-basis: 25%;
+        display: grid;
+        grid-template-columns: 200px 200px;
+        column-gap: 40px;
+        padding: 30px;
+    }
+
+    .section-2-image {
+        height: 250px;
+    }
+
+    .section-2-image img {
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    .section-2-image:hover img {
+        animation: upimage 0.5s linear;
+    }
+
+    .image-2,
+    .image-4 {
+        margin: 30px 0 30px;
+    }
+
+    .text-section-2 {
+        flex-basis: 55%;
+        padding: 30px 30px 30px 60px;
+    }
+
+    .text-section-2 h2 {
+        color: white;
+        font-size: 39px;
+        font-weight: bold;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .text-section-2 p {
+        color: white;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .statistic {
+        padding: 15px 20px;
+        margin: 30px auto;
+        border: none;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+        color: white;
+    }
+
+    .statistic .years {
+        font-size: 25px;
+        font-weight: bold;
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .container-3 {
+        width: 100%;
+        padding-bottom: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container-3 .title-section-3 h3 {
+        font-size: 40px;
+        font-weight: bold;
+        color: var(--text-color);
+        margin-bottom: 50px;
+    }
+    .categories-section-3 {
+        display: grid;
+        grid-template-columns: 300px 300px 300px;
+        column-gap: 80px;
+        row-gap: 40px;
+    }
+
+    .categories-section-3 .box {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        background-color: #F5F5F5;
+    }
+
+    .categories-section-3 .box:hover {
+        box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .categories-section-3 .box i {
+        font-size: 24px;
+        color: #4862FB;
+    }
+
+    .categories-section-3 .box h4 {
+        font-size: 20px;
+        margin: 20px 0 7px;
+        text-align: center;
+        color: #000;
+    }
+
+    .categories-section-3 .box p {
+        text-align: center;
+        font-size: 14px;
+        color: #000;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 20px;
+        background-color: #0E2351;
+        color: white;
+        padding: 40px 50px;
+    }
+
+    footer ol {
+        list-style: none;
+    }
+
+    footer p {
+        text-align: center;
+    }
+
+    .google-map {
+        padding-bottom: 25%;
+        position: relative;
+    }
+
+    .google-map iframe {
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+    }
+
+    @keyframes upimage {
+        30% {
+            transform: translateY(0px);
+        }
+
+        60% {
+            transform: translateY(20px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes UPdown {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(20px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    @media (max-width: 1100px) {
+        .container1 {
+            width: 100%;
+        }
+
+        header {
+            width: 100%;
+        }
+
+        .container1 .text-section-1 {
+            margin-left: 25px;
+        }
+
+        .container1 .text-section-1 .title-section-1 {
+            font-size: 39px;
+            line-height: 39px;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .container1 .text-section-1 .paragrapg-section-1 {
+            font-size: 15px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .container2 {
+            width: 100%;
+            padding: 160px 0 180px;
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .text-section-2 {
+            padding: 50px;
+            text-align: center;
+            width: 85%;
+        }
+
+        .text-section-2 h2 {
+            font-size: 39px;
+        }
+
+        .container2 .image-sectio-2 {
+            padding: 0px;
+            column-gap: 50px;
+            grid-template-columns: 200px 200px 200px 200px;
+        }
+
+        .statistic {
+            width: 50%;
+        }
+
+        .container-3 .title-section-3 h3 {
+            margin-bottom: 50px;
+        }
+
+        .categories-section-3 {
+            grid-template-columns: 300px 300px;
+            column-gap: 100px;
+            row-gap: 40px;
+        }
+
+    }
+
+    @media (max-width: 1000px) {
+        .container2 .image-sectio-2 {
+            grid-template-columns: 250px 250px;
+            row-gap: 100px;
+        }
+
+        .section-2-image {
+            height: 250px;
+        }
+
+        .container-3 .title-section-3 h3 {
+            margin-top: 30px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .container1 {
+            width: 100%;
+            flex-direction: column;
+            padding-left: 0;
+        }
+
+        .container1 .text-section-1 {
+            margin-left: 0px;
+            margin-bottom: 30px;
+            flex-basis: 100%;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container1 .text-section-1 h1,
+        .container1 .text-section-1 p {
+            text-align: center;
+        }
+
+        .image-3,
+        .image-4 {
+            display: none;
+        }
+
+        .statistic {
+            width: 60%;
+            padding: 10px 15px;
+        }
+
+        .statistic .years {
+            font-size: 27px;
+        }
+
+        .text-section-2 {
+            width: 90%;
+        }
+
+        .text-section-2 h2 {
+            font-size: 36px;
+        }
+
+        .text-section-2 p {
+            font-size: 13px;
+        }
+
+        .container-3 .title-section-3 h3 {
+            margin-bottom: 50px;
+        }
+
+        .categories-section-3 {
+            grid-template-columns: 300px;
+            column-gap: 150px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .container2 .image-sectio-2 {
+            grid-template-columns: 250px;
+            row-gap: 180px;
+        }
+
+        .section-2-image {
+            height: 200px;
+        }
+
+        .statistic {
+            width: 90%;
+            padding: 10px 15px;
+        }
+
+        .statistic .years {
+            font-size: 19px;
+        }
+
+        .text-section-2 {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .categories-section-3 {
+            grid-template-columns: 300px;
+            column-gap: 150px;
+        }
+    }
+</style>
+
+<body>
+    <header>
+        <div class="nav-logo">
+            <img src="images/ESTA Logo.png" alt="est agadir logo">
+        </div>
+        <div class="nav-btn">
+            <button class="theme-btn"><i class="fa-solid fa-moon" style="color: #000000;"></i></button>
+        </div>
+    </header>
+    <section class="container1">
+        <div class="text-section-1">
+            <h1 class="title-section-1"><span>Gestions des performances</span><br>etudiants en temps reel.</h1>
+            <p class="paragrapg-section-1">
+                Une plateforme de gestion des performances scolaires en temps réel pour permettre aux étudiants de générer facilement leurs bulletins scolaires personnalisés.
+            <div class="section-1-btns">
+                <button class="login-btn" onclick="window.location.href = 'html-files/login.html';">Login</button>
+                <button class="sign-up-btn" onclick="window.location.href = 'html-files/sign-up-page.html';">Signup</button>
+            </div>
+        </div>
+        <div class="image-section-1">
+            <i class="graduation fa-solid fa-graduation-cap"></i>
+            <i class="calendar fa-solid fa-calendar-check"></i>
+            <div class="cercle-design-1"></div>
+            <div class="cercle-design-2"></div>
+            <div class="cercle-design-3"></div>
+            <img src="images/image1.png" alt="">
+        </div>
+    </section>
+    <section class="container2">
+        <div class="image-sectio-2">
+            <div class="section-2-image image-1">
+                <img src="images/man-by-whiteboard.jpg" alt="">
+            </div>
+            <div class="section-2-image image-2">
+                <img src="images/medium-shot-scientist-working-lab.jpg" alt="">
+            </div>
+            <div class="section-2-image image-3">
+                <img src="images/man-electrical-technician-working-switchboard-with-fuses.jpg" alt="">
+            </div>
+            <div class="section-2-image image-4">
+                <img src="images/tmpic.jpg" alt="">
+            </div>
+        </div>
+        <div class="text-section-2">
+            <h2>Ecole Superieure De Technologie</h2>
+            <p>
+                L'EST d'Agadir forme des professionnels en ingénierie et management depuis 1990. Elle propose des
+                formations en DUT et en LP pour une insertion rapide dans la vie active ou une poursuite d'études
+                supérieures. Elle met en avant l'acquisition du savoir-faire, de l'autonomie et de l'initiative chez ses
+                étudiants. L'ESTA consacre également une part importante à la recherche scientifique et à l'innovation,
+                en hébergeant des structures de recherche et en favorisant les partenariats nationaux et internationaux
+                pour une formation de qualité.
+            <div class="statistic">
+                <div class="years">+0 annee d'excellence </div>
+            </div>
+        </div>
+    </section>
+    <section class="container-3 ">
+        <div class="title-section-3 ">
+            <h3>Categories De Cours</h3>
+        </div>
+        <div class="categories-section-3">
+            <div class="box">
+                <i class="fa-solid fa-desktop"></i>
+                <h4>Génie informatique</h4>
+                <p>La filière Génie Informatique forme des experts en programmation et en développement de logiciels innovants.</p>
+            </div>
+            <div class=" box">
+                <i class="fa-solid fa-lightbulb"></i>
+                <h4>Génie electrique</h4>
+                <p>La filière Génie Électrique prépare les étudiants à devenir des spécialistes des systèmes électriques et électroniques.</p>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-flask"></i>
+                <h4>Génie bio-industrielle</h4>
+                <p>La filière Génie Bio-industriel forme des professionnels compétents en bio-ingénierie et en industries biotechnologiques.</p>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-user-group"></i>
+                <h4>Technique de communication</h4>
+                <p>La filière de techniques de communication et commerce est une 
+                    filière d'études supérieures qui combine les compétences en 
+                    communication et en commerce.</p>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-user-tie"></i>
+                <h4>Technique de management</h4>
+                <p>La filière de TM est une formation universitaire qui permet aux 
+                    étudiants d'acquérir des compétences 
+                    en matière de gestion d'entreprise..</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <h3>ESTA</h3>
+        <ol>
+            <li>Adresse : BP : S33 – Agadir Ville : Agadir</li>
+            <li>Code Postale : 80150</li>
+            <li>Téléphone : 0528232583</li>
+            <li>Fax : 0528227824</li>
+        </ol>
+        <div class="google-map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28852.552077053493!2d-9.576274498693925!3d30.39777005466916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b696ddc99b19%3A0x559600239b0202af!2sAgadir%20Higher%20School%20of%20Technology!5e0!3m2!1sen!2sma!4v1683981408073!5m2!1sen!2sma"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p>Copyright © 2023. All Rights Reserved.</p>
+    </footer>
+    <script>
+        let years = document.body.querySelector(".years");
+        let title = document.body.querySelector(".container-3");
+        let categories = document.body.querySelector(".title-section-3");
+        const triggerHeight = 500;
+        window.addEventListener('scroll', function myScrollFunc() {
+            const scrollPosition = document.documentElement.scrollTop;
+            if (scrollPosition > triggerHeight) {
+                myFunction();
+                window.removeEventListener('scroll', myScrollFunc);
+            }
+        });
+      
+        function myFunction() {
+            let i = 0;
+            const interval = setInterval(() => {
+                i++;
+                if (i > 32) {
+                    clearInterval(interval);
+                }
+                years.innerHTML = `+${i} annee d'excellence`;
+            }, 50);
+        }
+        document.querySelector('.theme-btn').addEventListener('click', changeTheme);
+        let themeBtn = document.querySelector('.theme-btn');
+        let theme = localStorage.getItem('theme');
+        if (theme === null) {
+            theme = 'light';
+            localStorage.setItem('theme', theme);
+        }
+        else if (theme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeBtn.innerHTML = '<i class="fa-solid fa-sun" style="color: #ffffff;"></i>';
+        }
+
+        window.addEventListener('storage', (event) => {
+            const theme1 = event.newValue;
+            if (theme1 === 'light') {
+                theme = 'light';
+                themeBtn.innerHTML = '<i class="fa-solid fa-moon" style="color: #000000;"></i>';
+                document.body.classList.remove('dark-mode');
+            }
+            else if (theme1 === 'dark') {
+                theme = 'dark';
+                themeBtn.innerHTML = '<i class="fa-solid fa-sun" style="color: #ffffff;"></i>';
+                document.body.classList.add('dark-mode');
+            }
+        });
+        function changeTheme() {
+            if (theme === 'light') {
+                theme = 'dark';
+                themeBtn.innerHTML = '<i class="fa-solid fa-sun" style="color: #ffffff;"></i>';
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', theme);
+            } else if (theme === 'dark') {
+                theme = 'light';
+                themeBtn.innerHTML = '<i class="fa-solid fa-moon" style="color: #000000;"></i>';
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', theme);
+            }
+        }
+    </script>
+</body>
+
+</html>
