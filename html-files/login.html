@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script src="https://kit.fontawesome.com/448fdde26a.js" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Gloria+Hallelujah&family=Grape+Nuts&family=Inter:wght@300&family=Lato:ital,wght@0,700;1,400&family=Montserrat:wght@600&family=Pacifico&family=Patrick+Hand&family=Permanent+Marker&family=Poppins&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --text-color: #5e5e5e;
+            --background-color: white;
+            --input: white;
+            --icon-txt: #bfbfbf;
+
+        }
+
+        .dark-mode {
+            --text-color: rgb(224, 224, 224);
+            --background-color: rgb(37, 37, 37);
+            --input: rgb(53, 53, 53);
+            --icon-txt: white;
+        }
+
+        body {
+            width: 100%;
+            background-color: var(--background-color);
+        }
+
+        input {
+            background-color: var(--input);
+            color: var(--text-color);
+        }
+
+        header {
+            height: 80px;
+            width: 90%;
+            margin: 0 auto;
+            position: relative;
+            /* background-color: blue; */
+
+        }
+
+        header .nav-logo {
+            width: 30%;
+            height: 100%;
+            float: left;
+            margin-left: 10%;
+        }
+
+        header .nav-logo img {
+            height: 100%;
+        }
+
+        .container1 {
+            width: 100%;
+            margin: 10px auto 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .form-input {
+            padding-top: 40px;
+            flex-basis: 30%;
+            border: 2px solid #bfbfbf;
+            border-radius: 9px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 60px;
+            background-color: var(--background-color);
+        }
+
+        .container1 .form-input h1 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #6177FF;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .container1 .form-input p {
+            font-size: 14px;
+            color: var(--text-color);
+            width: 100%;
+            text-align: center;
+        }
+
+        .feild .input-area input {
+            padding: 12px 0 12px 50px;
+            min-width: 400px;
+            max-width: 400px;
+            margin-top: 10px;
+            font-size: 16px;
+            border: 1px solid var(--icon-txt);
+            border-radius: 5px;
+            outline: none;
+
+        }
+
+        .feild .input-area input::placeholder {
+            color: var(--icon-txt);
+        }
+
+        input[type='submit'] {
+            padding: 10px 30px;
+            margin: 10px 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #6177FF;
+            border-radius: 5px;
+            background-color: #6177FF;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type='submit']:hover {
+            background-color: white;
+            color: #6177FF;
+        }
+
+        .login-link {
+            width: 100%;
+        }
+
+        .login-link p {
+            color: var(--text-color);
+            font-size: 17px;
+            width: 100%;
+        }
+        .forget-pass a{
+            font-size: 17px;
+            color: #6177FF;
+            text-decoration: none;
+        }
+
+        .login-link p a {
+            text-decoration: none;
+            color: #6177FF;
+            font-weight: bold;
+        }
+
+        .input-area {
+            position: relative;
+            min-width: 400px;
+            max-width: 400px;
+        }
+
+        .input-area .user-icon{
+            position: absolute;
+            top: 40%;
+            left: 20px;
+            font-size: 18px;
+            color: var(--icon-txt);
+        }
+
+        .input-area .faut-icon{
+            position: absolute;
+            top: 40%;
+            right: 20px;
+            font-size: 19px;
+            color: #ce3565;
+            display: none ;
+        }
+
+        .input-area .good-icon {
+            position: absolute;
+            top: 40%;
+            right: 20px;
+            font-size: 19px;
+            color: #378006;
+            display: none;
+        }
+
+        .input-area .eye-icon{
+            position: absolute;
+            top: 40%;
+            right: 20px;
+            font-size: 19px;
+            color: var(--icon-txt);
+        }
+
+        .feild.good .input-area .eye-icon {
+            color: #378006;
+        }
+
+        .feild.faut .input-area .eye-icon {
+            color: #ce3565;
+        }
+
+        .feild.good .input-area .good-icon {
+            display: block;
+        }
+
+        .feild.good .input-area .faut-icon {
+            display: none;
+        }
+
+        .feild.faut .input-area .good-icon {
+            display: none;
+        }
+
+        .feild.faut .input-area .faut-icon {
+            display: block;
+        }
+
+        .erreurtext {
+            color: #ce3565;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .feild.faut .input-area input {
+            border-color: #ce3565;
+        }
+
+        .feild.good .input-area input {
+            border-color: #378006;
+        }
+
+        @media (max-width: 1000px) {
+            .container1 {
+                width: 70%;
+            }
+
+            .form-input {
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-logo">
+            <img src="../images/Université_Ibn_Zohr-removebg-preview.png" alt="est agadir logo">
+        </div>
+    </header>
+    <section class="container1">
+        <form action="" class="form-input">
+            <h1>welcome back!</h1>
+            <p>creer votre compte etudiant et gerer facilement votre bulltin de note.</p>
+            <div class="feild user-name">
+                <div class="input-area">
+                    <i class="user-icon fa-solid fa-user"></i>
+                    <i class="faut-icon fa-solid fa-xmark"></i>
+                    <i class="good-icon fa-solid fa-check"></i>
+                    <input class="input-user-name" type="text" placeholder="Entrez votre username.">
+                </div>
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild password">
+                <div class="input-area">
+                    <i class="user-icon fa-solid fa-lock"></i>
+                    <i class="eye-icon fa-solid fa-eye"></i>
+                    <input class="input-password" type="password" placeholder="Entrez votre password.">
+                </div>
+                <div class="erreurtext"></div>
+            </div>
+            <div class="forget-pass">
+                <a href="reset-pass.html">mot de passe oublié</a>
+            </div>
+            <div class="submit-btn">
+                <input type="submit" value="Login">
+            </div>
+            <div class="login-link">
+                <p>vous n'avez pas un compte ? <a href="sign-up-page.html">sign up</a></p>
+            </div>
+        </form>
+
+    </section>
+    <script>
+        const dataBase = JSON.parse(localStorage.getItem("base")) || [{
+            firstName: 'reda',
+            lastName: 'elkhayati',
+            userName: 'reda.elkhayati',
+            cne : 'jM107399' ,
+            email: 'redaredael@gmail.com',
+            password: 'redaREDA2004'
+        },
+        {
+            firstName: 'mostapha',
+            lastName: 'bayi',
+            cne : 'jM107389' ,
+            userName: 'mostapha.bayi',
+            email: 'lolihater69@gmail.com',
+            password: 'MostaphaBayiLetsGoo.2004'
+        }];
+
+        const form = document.querySelector('form');
+
+        const userNameFeild = form.querySelector('.user-name');
+        const userNameInput = userNameFeild.querySelector('.input-user-name');
+        const userNameerreur = userNameFeild.querySelector('.erreurtext');
+
+        const passFeild = form.querySelector('.password');
+        const passInput = passFeild.querySelector('.input-password');
+        const passerreur = passFeild.querySelector('.erreurtext');
+
+        userNameInput.onkeyup = () => {
+            passFeild.classList.remove('good');
+            checkUserName();
+        }
+        passInput.onkeyup = () => {
+            checkPassword();
+        }
+        function checkUserName() {
+            for (let i = 0; i < dataBase.length; i++) {
+                if (userNameInput.value.trim().toLowerCase() === dataBase[i].userName) {
+                    userNameFeild.classList.remove('faut');
+                    userNameFeild.classList.add('good');
+                    userNameerreur.innerHTML = '';
+                    return 1;
+                } else {
+                    userNameFeild.classList.add('faut');
+                    userNameFeild.classList.remove('good');
+                    userNameerreur.innerHTML = 'username incorrecte.';
+                }
+            }
+            return 0;
+        }
+        function checkPassword() {
+            for (let i = 0; i < dataBase.length; i++) {
+                if (passInput.value.trim() === dataBase[i].password){
+                    if (userNameInput.value.trim().toLowerCase() === dataBase[i].userName) {
+                        passFeild.classList.remove('faut');
+                        passFeild.classList.add('good');
+                        passerreur.innerHTML = '';
+                        return 1;
+                    }
+                } else {
+                    passFeild.classList.add('faut');
+                    passFeild.classList.remove('good');
+                    passerreur.innerHTML = 'mot de passe incorrecte.';
+                }
+            }
+            return 0;
+        }
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            checkPassword();
+            checkUserName();
+            if (checkUserName() === 1 && checkPassword() === 1) {
+                for (let i = 0; i < dataBase.length; i++) {
+                    if (userNameInput.value.trim().toLowerCase() === dataBase[i].userName) {
+                        localStorage.setItem("currentUser", JSON.stringify(dataBase[i]));
+                        break;
+                    }
+                }
+                window.location.href = 'platforme.html';
+            }
+        }
+        const eyeIcon = document.querySelector(".eye-icon");
+        eyeIcon.onclick = () => {
+            if (passInput.type === 'text') {
+                passInput.type = 'password';
+            } else {
+                passInput.type = 'text';
+            }
+        }
+
+        let theme = localStorage.getItem('theme');
+        if (theme === 'light' && document.body.classList.contains('dark-mode')) {
+            document.body.classList.remove('dark-mode');
+        }
+        else if (theme === 'dark' && !document.body.classList.contains('dark-mode')) {
+            document.body.classList.add('dark-mode');
+        }
+
+        window.addEventListener('storage', (event) => {
+            const theme = event.newValue;
+            if (theme === 'light' && document.body.classList.contains('dark-mode')) {
+                document.body.classList.remove('dark-mode');
+            }
+            else if (theme === 'dark' && !document.body.classList.contains('dark-mode')) {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+    </script>
+</body>
+
+</html>

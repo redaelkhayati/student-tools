@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset password</title>
+    <script src="https://kit.fontawesome.com/448fdde26a.js" crossorigin="anonymous"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Gloria+Hallelujah&family=Grape+Nuts&family=Inter:wght@300&family=Lato:ital,wght@0,700;1,400&family=Montserrat:wght@600&family=Pacifico&family=Patrick+Hand&family=Permanent+Marker&family=Poppins&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --text-color: #5e5e5e;
+            --background-color: white;
+            --input: white;
+            --icon-txt: #bfbfbf;
+
+        }
+
+        .dark-mode {
+            --text-color: rgb(224, 224, 224);
+            --background-color: rgb(37, 37, 37);
+            --input: rgb(53, 53, 53);
+            --icon-txt: white;
+        }
+
+        body {
+            width: 100%;
+            background-color: var(--background-color);
+        }
+
+        header {
+            height: 80px;
+            width: 90%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        input {
+            background-color: var(--input);
+            color: var(--text-color);
+        }
+
+        header .nav-logo {
+            width: 30%;
+            height: 100%;
+            float: left;
+            margin-left: 10%;
+        }
+
+        header .nav-logo img {
+            height: 100%;
+        }
+
+        .container1 {
+            width: 100%;
+            margin: 10px auto 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .form-input {
+            padding-top: 40px;
+            flex-basis: 30%;
+            border: 2px solid #bfbfbf;
+            border-radius: 9px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 60px;
+            background-color: var(--background-color);
+        }
+
+        .container1 .form-input h1 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #6177FF;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .container1 .form-input p {
+            font-size: 14px;
+            color: var(--text-color);
+            width: 100%;
+            text-align: center;
+        }
+
+        .feild .input-area input {
+            padding: 12px 0 12px 50px;
+            min-width: 400px;
+            max-width: 400px;
+            margin-top: 10px;
+            font-size: 16px;
+            border: 1px solid var(--icon-txt);
+            border-radius: 5px;
+            outline: none;
+
+        }
+
+        .feild .input-area input::placeholder {
+            color: var(--icon-txt);
+        }
+
+        .btn-2 {
+            padding: 10px 30px;
+            margin: 10px 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #6177FF;
+            border-radius: 5px;
+            background-color: #6177FF;
+            color: var(--background-color);
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type='submit'] {
+            padding: 10px 30px;
+            margin: 10px 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #6177FF;
+            border-radius: 5px;
+            background-color: #6177FF;
+            color: var(--background-color);
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type='submit']:hover {
+            background-color: var(--background-color);
+            color: #6177FF;
+        }
+
+        .login-link {
+            width: 100%;
+        }
+
+        .login-link p {
+            color: var(--text-color);
+            font-size: 17px;
+            width: 100%;
+        }
+
+        .login-link p a {
+            text-decoration: none;
+            color: #6177FF;
+            font-weight: bold;
+        }
+
+        .input-area {
+            position: relative;
+            min-width: 400px;
+            max-width: 400px;
+        }
+
+        .input-area .user-icon {
+            position: absolute;
+            top: 40%;
+            left: 20px;
+            font-size: 18px;
+            color: var(--icon-txt);
+        }
+
+        .input-area .faut-icon {
+            position: absolute;
+            top: 40%;
+            right: 20px;
+            font-size: 19px;
+            color: #ce3565;
+            display: none;
+        }
+
+        .input-area .good-icon {
+            position: absolute;
+            top: 40%;
+            right: 20px;
+            font-size: 19px;
+            color: #378006;
+            display: none;
+        }
+
+        .feild.good .input-area .good-icon {
+            display: block;
+        }
+
+        .feild.good .input-area .faut-icon {
+            display: none;
+        }
+
+        .feild.faut .input-area .good-icon {
+            display: none;
+        }
+
+        .feild.faut .input-area .faut-icon {
+            display: block;
+        }
+
+        .erreurtext {
+            color: #ce3565;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .feild.faut .input-area input {
+            border-color: #ce3565;
+        }
+
+        .feild.good .input-area input {
+            border-color: #378006;
+        }
+
+        @media (max-width: 1000px) {
+            .container1 {
+                width: 70%;
+            }
+
+            .form-input {
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-logo">
+            <img src="../images/Université_Ibn_Zohr-removebg-preview.png" alt="est agadir logo">
+        </div>
+    </header>
+    <section class="container1">
+        <form action="" class="form-input">
+            <h1>mot de passe oublié</h1>
+            <p>entrez votre email.</p>
+            <div class="feild mail">
+                <div class="input-area">
+                    <i class="user-icon fa-solid fa-user"></i>
+                    <i class="faut-icon fa-solid fa-xmark"></i>
+                    <i class="good-icon fa-solid fa-check"></i>
+                    <input class="input-mail" type="email" placeholder="Entrez votre email.">
+                </div>
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild code ">
+                <div class="input-area">
+                    <i class="user-icon fa-solid fa-user"></i>
+                    <i class="faut-icon fa-solid fa-xmark"></i>
+                    <i class="good-icon fa-solid fa-check"></i>
+                    <input class="input-code" type="text" placeholder="Entrez votre code.">
+                </div>
+                <div class="erreurtext"></div>
+            </div>
+            <div class="submit-btn">
+                <input type="submit" value="envoyer">
+            </div>
+            <div class="login-link">
+                <p>vous n'avez pas un compte ? <a href="sign-up-page.html">Sign up</a></p>
+            </div>
+        </form>
+    </section>
+    <script>
+        const dataBase = JSON.parse(localStorage.getItem("base")) || [{
+            firstName: 'reda',
+            lastName: 'elkhayati',
+            userName: 'reda.elkhayati',
+            cne: 'jM107399',
+            email: 'redaredael@gmail.com',
+            password: 'redaREDA2004'
+        },
+        {
+            firstName: 'mostapha',
+            lastName: 'bayi',
+            cne: 'jM107389',
+            userName: 'mostapha.bayi',
+            email: 'skw9izo6@gmail.com',
+            password: 'MostaphaLetsGoo@2004'
+        }];
+        const form = document.querySelector('form');
+
+        const emailFeild = form.querySelector('.mail');
+        const emailInput = emailFeild.querySelector('.input-mail');
+        const emailerreur = emailFeild.querySelector('.erreurtext');
+
+
+        emailInput.onkeyup = () => {
+            checkMail();
+        }
+        function checkMail() {
+            let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!emailInput.value.match(pattern)) {
+                if (emailInput.value.trim().toLowerCase() === '') {
+                    emailerreur.innerHTML = 'votre e-mail ne peut pas etre vide';
+                    emailFeild.classList.add('faut');
+                    emailFeild.classList.remove('good');
+                } else {
+                    emailerreur.innerHTML = 'entrez un email valide';
+                    emailFeild.classList.add('faut');
+                    emailFeild.classList.remove('good');
+                }
+            } else {
+                for (let i = 0; i < dataBase.length; i++) {
+                    if (emailInput.value.trim().toLowerCase() === dataBase[i].email) {
+                        emailerreur.innerHTML = '';
+                        emailFeild.classList.remove('faut');
+                        emailFeild.classList.add('good');
+                        return 1;
+                    }
+                    emailerreur.innerHTML = "entrez un email existe";
+                    emailFeild.classList.remove('good');
+                    emailFeild.classList.add('faut');
+                }
+
+            }
+        }
+        const btn = document.querySelector('.submit-btn');
+        const codeFeild = form.querySelector('.code');
+        const codeerreur = codeFeild.querySelector('.erreurtext');
+        const codeInput = codeFeild.querySelector('.input-code');
+
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            let number = Math.floor(Math.random() * 10000);
+            if (checkMail() === 1) {
+                const emailData = emailInput.value;
+                btn.innerHTML = ` <div class="submit-btn">
+                <button class="btn-2"  >checking...</button>
+                </div>`;
+
+                Email.send({
+                    SecureToken: "785331e5-6ac4-493d-a8e3-8298f47776e8",
+                    To: `${emailData}`,
+                    From: "redaredael2004@gmail.com",
+                    Subject: "code authentication",
+                    Body: `votre code authetication est ${number}`
+                }).then(
+                    message => alert("check your email(spam).")
+                );
+
+                codeInput.onkeyup = () => {
+                    if (Number(codeInput.value.trim()) === number) {
+                        codeerreur.innerHTML = '';
+                        codeFeild.classList.remove('faut');
+                        localStorage.setItem("id", JSON.stringify(emailInput.value));
+                        window.location.href = 'createnewpass.html';
+                    } else {
+                        codeerreur.innerHTML = 'code incorrecte';
+                        codeFeild.classList.add('faut');
+                    }
+
+                }
+            }
+        }
+        let theme = localStorage.getItem('theme');
+        if (theme === 'light' && document.body.classList.contains('dark-mode')) {
+            document.body.classList.remove('dark-mode');
+        }
+        else if (theme === 'dark' && !document.body.classList.contains('dark-mode')) {
+            document.body.classList.add('dark-mode');
+        }
+
+        window.addEventListener('storage', (event) => {
+            const theme = event.newValue;
+            if (theme === 'light' && document.body.classList.contains('dark-mode')) {
+                document.body.classList.remove('dark-mode');
+            }
+            else if (theme === 'dark' && !document.body.classList.contains('dark-mode')) {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+    </script>
+</body>
+
+</html>

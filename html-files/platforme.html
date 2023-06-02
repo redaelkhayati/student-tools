@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <script src="https://kit.fontawesome.com/448fdde26a.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Gloria+Hallelujah&family=Grape+Nuts&family=Inter:wght@300&family=Lato:ital,wght@0,700;1,400&family=Montserrat:wght@600&family=Pacifico&family=Patrick+Hand&family=Permanent+Marker&family=Poppins&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primaty--color: #6177FF;
+            --secondry--color: #4862FB;
+            --secondry--color: #3A3A3A;
+            --secondry--color: #C8CFFF;
+
+            --text-color: #3A3A3A;
+            --background-color: white;
+            --input: white;
+            --icon-txt: #bfbfbf;
+        }
+
+        .dark-mode {
+            --text-color: white;
+            --background-color: rgb(37, 37, 37);
+            --input: rgb(53, 53, 53);
+            --icon-txt: white;
+        }
+
+        body {
+            width: 100%;
+            background-color: var(--background-color);
+        }
+
+        header {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 5;
+            background-color: var(--background-color);
+        }
+
+        header .logo {
+            width: 60%;
+            height: 100%;
+        }
+
+        header .logo img {
+            height: 100%;
+        }
+
+        header .nav-btn {
+            width: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .ctrl-sidebar {
+            display: none;
+        }
+
+        .theme-btn {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 25px;
+        }
+
+        .theme-btn:hover {
+            opacity: 0.9;
+        }
+
+        .theme-btn:active {
+            opacity: 0.8;
+        }
+
+        .side-bar {
+            z-index: 100;
+            top: 110px;
+            max-width: 220px;
+            left: 40px;
+            position: fixed;
+            background-color: #6177FF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 15px;
+            padding: 40px 30px;
+            transition: 300ms;
+        }
+
+        .title-bar {
+            margin: 100px auto;
+            width: 60%;
+            background-color: #E8EBFF;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 15px;
+            padding: 10px 35px;
+            margin-bottom: 20px;
+        }
+
+        .title-bar .text h1 {
+            font-size: 26px;
+            color: #4862FB;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .title-bar .text p {
+            font-size: 16px;
+            line-height: 19px;
+            color: #969696;
+            width: 100%;
+        }
+
+        .title-bar .image {
+            flex-basis: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .title-bar .image img {
+            height: 200px;
+        }
+
+        .box {
+            font-size: 16px;
+            color: white;
+            z-index: 100;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .box.selected {
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        .container1 {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bultin-container {
+            width: 90%;
+            flex-basis: 50%;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0;
+            background-color: var(--background-color);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .bultin-container h1 {
+            color: var(--text-color);
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .bultin-container h3 {
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .feild {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feild input {
+            background-color: var(--input);
+            color: var(--text-color);
+            padding: 10px 0 10px 25px;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 10px;
+            font-size: 16px;
+            border: 1px solid #bfbfbf;
+            border-radius: 15px;
+            outline: none;
+        }
+
+        .feild input::placeholder {
+            color: var(--icon-txt);
+        }
+
+        .save-btn .download {
+            padding: 10px 30px;
+            margin: 10px 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #4862FB;
+            border-radius: 5px;
+            background-color: #4862FB;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .save-btn .download:hover {
+            background-color: white;
+            color: #4862FB;
+        }
+
+        .feild.faut input {
+            border-color: #e0225e;
+        }
+
+        .erreurtext {
+            color: #e0225e;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        @media(max-width:1250px) {
+            .side-bar {
+                left: -100%;
+            }
+
+            .show-side-bar {
+                left: 10px;
+            }
+
+            .ctrl-sidebar {
+                display: block;
+                border: none;
+                cursor: pointer;
+                background-color: var(--primaty--color);
+                color: var(--background-color);
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+
+            .title-bar {
+                position: static;
+                height: auto;
+                margin: 0 auto;
+                width: 90%;
+                margin-top: 100px;
+            }
+
+            .container1 {
+                padding: 0;
+                display: block;
+            }
+
+            .bultin-container {
+                box-shadow: none;
+                margin: 0 auto;
+                align-items: stretch;
+            }
+        }
+
+        @media (min-width:1500px) {
+            .side-bar {
+                left: 15%;
+            }
+
+            .title-bar {
+                width: 1000px;
+            }
+
+            .bultin-container {
+                width: 1000px;
+            }
+
+            .feild input {
+                width: 800px;
+            }
+        }
+
+        @media (max-width:500px) {
+            .title-bar {
+                flex-direction: column-reverse;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="../images/Université_Ibn_Zohr-removebg-preview.png" alt="est agadir logo">
+        </div>
+        <button class="ctrl-sidebar">Side bar</button>
+        <div class="nav-btn">
+            <button class="theme-btn"><i class="fa-solid fa-moon" style="color: #000000;"></i></button>
+        </div>
+    </header>
+    <div class="side-bar">
+        <div class="box-1 box selected">
+            generer bulttin
+        </div>
+        <div class="box-2 box ">
+            calculator
+        </div>
+        <div class="box-3 box">
+            coming soon
+        </div>
+        <div class="box-3 box">
+            coming soon
+        </div>
+        <div class="box-3 box">
+            coming soon
+        </div>
+
+    </div>
+    <div class="title-bar">
+        <div class="text">
+            <h1 class="txt-title"><a href="login.html" style="color: var(--primaty--color);">appuyez sur moi</a>(vouz devez s'inscrir!!)</h1>
+            <p>Félicitations pour votre inscription sur notre site web de l'école ! Bienvenue parmi notre communauté
+                étudiante en ligne. </p>
+        </div>
+        <div class="image">
+            <img src="../images/undraw_teacher_re_sico(1) 1.png" alt="">
+        </div>
+    </div>
+    <div class="container1">
+        <div class="bultin-container">
+            <h1>Generer votre bulltin facilement!</h1>
+            <h3>Entrer vos notes:</h3>
+            <div class="feild analyse-numerique">
+                <input class="input-analyse-numerique" type="text" placeholder="analyse numerique .">
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild probabilty">
+                <input class="input-probabilty" type="text" placeholder="probabilty .">
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild statistique">
+                <input class="input-statistique" type="text" placeholder="statistique .">
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild s-d">
+                <input class="input-s-d" type="text" placeholder="structure donne .">
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild pro-web">
+                <input class="input-pro-web" type="text" placeholder="programmation web.">
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild bd">
+                <input class="input-bd" type="text" placeholder="base donnee .">
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild si">
+                <input class="input-si" type="text" placeholder="systeme d'information .">
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild se">
+                <input class="input-se" type="text" placeholder="systeme d'exploitation .">
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild reseau">
+                <input class="input-reseau" type="text" placeholder="reseau .">
+                <div class="erreurtext"></div>
+            </div>
+            <div class="save-btn">
+                <button class="download">download</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.ctrl-sidebar').addEventListener('click', () => {
+            document.querySelector('.side-bar').classList.toggle('show-side-bar');
+        });
+
+
+        document.querySelector('.theme-btn').addEventListener('click', changeTheme);
+        let themeBtn = document.querySelector('.theme-btn');
+        let theme = localStorage.getItem('theme');
+        if (theme === null) {
+            theme = 'light';
+            localStorage.setItem('theme', theme);
+        }
+        else if (theme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeBtn.innerHTML = '<i class="fa-solid fa-sun" style="color: #ffffff;"></i>';
+        }
+
+        window.addEventListener('storage', (event) => {
+            const theme1 = event.newValue;
+            if (theme1 === 'light') {
+                theme = 'light';
+                themeBtn.innerHTML = '<i class="fa-solid fa-moon" style="color: #000000;"></i>';
+                document.body.classList.remove('dark-mode');
+            }
+            else if (theme1 === 'dark') {
+                theme = 'dark';
+                themeBtn.innerHTML = '<i class="fa-solid fa-sun" style="color: #ffffff;"></i>';
+                document.body.classList.add('dark-mode');
+            }
+        });
+        function changeTheme() {
+            if (theme === 'light') {
+                theme = 'dark';
+                themeBtn.innerHTML = '<i class="fa-solid fa-sun" style="color: #ffffff;"></i>';
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', theme);
+            } else if (theme === 'dark') {
+                theme = 'light';
+                themeBtn.innerHTML = '<i class="fa-solid fa-moon" style="color: #000000;"></i>';
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', theme);
+            }
+        }
+
+
+        const dataUser = JSON.parse(localStorage.getItem("currentUser"));
+        const header = document.querySelector('.txt-title');
+        if (dataUser !== null)
+            header.innerHTML = `Bonjour, Mr ${dataUser.firstName} ${dataUser.lastName}!`;
+
+        let pattern = /^[-+]?\d*\.?\d+$/;
+
+        const calculator = document.querySelector('.box-2');
+        calculator.onclick = () => {
+            window.location.href = 'calcul2.html';
+        }
+
+        const form = document.querySelector('.bultin-container');
+        const mark1Feild = form.querySelector('.analyse-numerique');
+        const mark1Input = mark1Feild.querySelector('.input-analyse-numerique');
+        const mark1erreur = mark1Feild.querySelector('.erreurtext');
+
+        const mark2Feild = form.querySelector('.probabilty');
+        const mark2Input = mark2Feild.querySelector('.input-probabilty');
+        const mark2erreur = mark2Feild.querySelector('.erreurtext');
+
+        const mark3Feild = form.querySelector('.statistique');
+        const mark3Input = mark3Feild.querySelector('.input-statistique');
+        const mark3erreur = mark3Feild.querySelector('.erreurtext');
+
+        const mark4Feild = form.querySelector('.s-d');
+        const mark4Input = mark4Feild.querySelector('.input-s-d');
+        const mark4erreur = mark4Feild.querySelector('.erreurtext');
+
+        const mark5Feild = form.querySelector('.pro-web');
+        const mark5Input = mark5Feild.querySelector('.input-pro-web');
+        const mark5erreur = mark5Feild.querySelector('.erreurtext');
+
+        const mark6Feild = form.querySelector('.bd');
+        const mark6Input = mark6Feild.querySelector('.input-bd');
+        const mark6erreur = mark6Feild.querySelector('.erreurtext');
+
+        const mark7Feild = form.querySelector('.si');
+        const mark7Input = mark7Feild.querySelector('.input-si');
+        const mark7erreur = mark7Feild.querySelector('.erreurtext');
+
+        const mark8Feild = form.querySelector('.se');
+        const mark8Input = mark8Feild.querySelector('.input-se');
+        const mark8erreur = mark8Feild.querySelector('.erreurtext');
+
+        const mark9Feild = form.querySelector('.reseau');
+        const mark9Input = mark9Feild.querySelector('.input-reseau');
+        const mark9erreur = mark9Feild.querySelector('.erreurtext');
+
+        mark1Input.onkeyup = () => {
+            if (mark1Input.value.trim().match(pattern)) {
+                if (Number(mark1Input.value.trim()) < 0 || Number(mark1Input.value.trim()) > 20) {
+                    mark1erreur.innerHTML = 'la note doit etre entre 0 et 20  ';
+                    mark1Feild.classList.add('faut');
+                    mark1Feild.classList.remove('good');
+                } else {
+                    mark1erreur.innerHTML = '';
+                    mark1Feild.classList.add('good');
+                    mark1Feild.classList.remove('faut');
+                }
+            } else if (mark1Input.value.trim() === '') {
+                mark1erreur.innerHTML = 'le champ ne peut pas etre vide ';
+                mark1Feild.classList.add('faut');
+                mark1Feild.classList.remove('good');
+            } else {
+                mark1erreur.innerHTML = 'svp entrez un nombre ';
+                mark1Feild.classList.add('faut');
+                mark1Feild.classList.remove('good');
+            }
+        }
+        mark2Input.onkeyup = () => {
+            if (mark2Input.value.trim().match(pattern)) {
+                if (Number(mark2Input.value.trim()) < 0 || Number(mark2Input.value.trim()) > 20) {
+                    mark2erreur.innerHTML = 'la note doit etre entre 0 et 20  ';
+                    mark2Feild.classList.add('faut');
+                    mark2Feild.classList.remove('good');
+                } else {
+                    mark2erreur.innerHTML = '';
+                    mark2Feild.classList.add('good');
+                    mark2Feild.classList.remove('faut');
+                }
+            } else if (mark2Input.value.trim() === '') {
+                mark2erreur.innerHTML = 'le champ ne peut pas etre vide ';
+                mark2Feild.classList.add('faut');
+                mark2Feild.classList.remove('good');
+            } else {
+                mark2erreur.innerHTML = 'svp entrez un nombre ';
+                mark2Feild.classList.add('faut');
+                mark2Feild.classList.remove('good');
+            }
+        }
+        mark3Input.onkeyup = () => {
+            if (mark3Input.value.trim().match(pattern)) {
+                if (Number(mark3Input.value.trim()) < 0 || Number(mark3Input.value.trim()) > 20) {
+                    mark3erreur.innerHTML = 'la note doit etre entre 0 et 20  ';
+                    mark3Feild.classList.add('faut');
+                    mark3Feild.classList.remove('good');
+                } else {
+                    mark3erreur.innerHTML = '';
+                    mark3Feild.classList.add('good');
+                    mark3Feild.classList.remove('faut');
+                }
+            } else if (mark3Input.value.trim() === '') {
+                mark3erreur.innerHTML = 'le champ ne peut pas etre vide ';
+                mark3Feild.classList.add('faut');
+                mark3Feild.classList.remove('good');
+            } else {
+                mark3erreur.innerHTML = 'svp entrez un nombre ';
+                mark3Feild.classList.add('faut');
+                mark3Feild.classList.remove('good');
+            }
+        }
+        mark4Input.onkeyup = () => {
+            if (mark4Input.value.trim().match(pattern)) {
+                if (Number(mark4Input.value.trim()) < 0 || Number(mark4Input.value.trim()) > 20) {
+                    mark4erreur.innerHTML = 'la note doit etre entre 0 et 20  ';
+                    mark4Feild.classList.add('faut');
+                    mark4Feild.classList.remove('good');
+                } else {
+                    mark4erreur.innerHTML = '';
+                    mark4Feild.classList.add('good');
+                    mark4Feild.classList.remove('faut');
+                }
+            } else if (mark4Input.value.trim() === '') {
+                mark4erreur.innerHTML = 'le champ ne peut pas etre vide ';
+                mark4Feild.classList.add('faut');
+                mark4Feild.classList.remove('good');
+            } else {
+                mark4erreur.innerHTML = 'svp entrez un nombre ';
+                mark4Feild.classList.add('faut');
+                mark4Feild.classList.remove('good');
+            }
+        }
+        mark5Input.onkeyup = () => {
+            if (mark5Input.value.trim().match(pattern)) {
+                if (Number(mark5Input.value.trim()) < 0 || Number(mark5Input.value.trim()) > 20) {
+                    mark5erreur.innerHTML = 'la note doit etre entre 0 et 20  ';
+                    mark5Feild.classList.add('faut');
+                    mark5Feild.classList.remove('good');
+                } else {
+                    mark5erreur.innerHTML = '';
+                    mark5Feild.classList.add('good');
+                    mark5Feild.classList.remove('faut');
+                }
+            } else if (mark5Input.value.trim() === '') {
+                mark5erreur.innerHTML = 'le champ ne peut pas etre vide ';
+                mark5Feild.classList.add('faut');
+                mark5Feild.classList.remove('good');
+            } else {
+                mark5erreur.innerHTML = 'svp entrez un nombre ';
+                mark5Feild.classList.add('faut');
+                mark5Feild.classList.remove('good');
+            }
+        }
+        mark6Input.onkeyup = () => {
+            if (mark6Input.value.trim().match(pattern)) {
+                if (Number(mark6Input.value.trim()) < 0 || Number(mark6Input.value.trim()) > 20) {
+                    mark6erreur.innerHTML = 'la note doit etre entre 0 et 20  ';
+                    mark6Feild.classList.add('faut');
+                    mark6Feild.classList.remove('good');
+                } else {
+                    mark6erreur.innerHTML = '';
+                    mark6Feild.classList.add('good');
+                    mark6Feild.classList.remove('faut');
+                }
+            } else if (mark6Input.value.trim() === '') {
+                mark6erreur.innerHTML = 'le champ ne peut pas etre vide ';
+                mark6Feild.classList.add('faut');
+                mark6Feild.classList.remove('good');
+            } else {
+                mark6erreur.innerHTML = 'svp entrez un nombre ';
+                mark6Feild.classList.add('faut');
+                mark6Feild.classList.remove('good');
+            }
+        }
+        mark7Input.onkeyup = () => {
+            if (mark7Input.value.trim().match(pattern)) {
+                if (Number(mark7Input.value.trim()) < 0 || Number(mark7Input.value.trim()) > 20) {
+                    mark7erreur.innerHTML = 'la note doit etre entre 0 et 20  ';
+                    mark7Feild.classList.add('faut');
+                    mark7Feild.classList.remove('good');
+                } else {
+                    mark7erreur.innerHTML = '';
+                    mark7Feild.classList.add('good');
+                    mark7Feild.classList.remove('faut');
+                }
+            } else if (mark7Input.value.trim() === '') {
+                mark7erreur.innerHTML = 'le champ ne peut pas etre vide ';
+                mark7Feild.classList.add('faut');
+                mark7Feild.classList.remove('good');
+            } else {
+                mark7erreur.innerHTML = 'svp entrez un nombre ';
+                mark7Feild.classList.add('faut');
+                mark7Feild.classList.remove('good');
+            }
+        }
+        mark8Input.onkeyup = () => {
+            if (mark8Input.value.trim().match(pattern)) {
+                if (Number(mark8Input.value.trim()) < 0 || Number(mark8Input.value.trim()) > 20) {
+                    mark8erreur.innerHTML = 'la note doit etre entre 0 et 20  ';
+                    mark8Feild.classList.add('faut');
+                    mark8Feild.classList.remove('good');
+                } else {
+                    mark8erreur.innerHTML = '';
+                    mark8Feild.classList.add('good');
+                    mark8Feild.classList.remove('faut');
+                }
+            } else if (mark8Input.value.trim() === '') {
+                mark8erreur.innerHTML = 'le champ ne peut pas etre vide ';
+                mark8Feild.classList.add('faut');
+                mark8Feild.classList.remove('good');
+            } else {
+                mark8erreur.innerHTML = 'svp entrez un nombre ';
+                mark8Feild.classList.add('faut');
+                mark8Feild.classList.remove('good');
+            }
+        }
+        mark9Input.onkeyup = () => {
+            if (mark9Input.value.trim().match(pattern)) {
+                if (Number(mark9Input.value.trim()) < 0 || Number(mark9Input.value.trim()) > 20) {
+                    mark9erreur.innerHTML = 'la note doit etre entre 0 et 20  ';
+                    mark9Feild.classList.add('faut');
+                    mark9Feild.classList.remove('good');
+                } else {
+                    mark9erreur.innerHTML = '';
+                    mark9Feild.classList.add('good');
+                    mark9Feild.classList.remove('faut');
+
+                }
+            } else if (mark9Input.value.trim() === '') {
+                mark9erreur.innerHTML = 'le champ ne peut pas etre vide ';
+                mark9Feild.classList.add('faut');
+                mark9Feild.classList.remove('good');
+            } else {
+                mark9erreur.innerHTML = 'svp entrez un nombre ';
+                mark9Feild.classList.add('faut');
+                mark9Feild.classList.remove('good');
+            }
+        }
+
+
+
+        document.querySelector('.download').addEventListener('click', () => {
+            let an = document.querySelector('.input-analyse-numerique').value;
+            let rproba = document.querySelector('.input-probabilty').value;
+            let rstat = document.querySelector('.input-statistique').value;
+            let rsd = document.querySelector('.input-s-d').value;
+            let rweb = document.querySelector('.input-pro-web').value;
+            let rbd = document.querySelector('.input-bd').value;
+            let rsi = document.querySelector('.input-si').value;
+            let rse = document.querySelector('.input-se').value;
+            let rreseau = document.querySelector('.input-reseau').value;
+
+            let message = { an: parseFloat(an), rproba: parseFloat(rproba), rstat: parseFloat(rstat), rsd: parseFloat(rsd), rweb: parseFloat(rweb), rbd: parseFloat(rbd), rsi: parseFloat(rsi), rse: parseFloat(rse), rreseau: parseFloat(rreseau) };
+            localStorage.setItem("html", JSON.stringify(message));
+            window.location.href = 'test-page.html';
+
+        })
+    </script>
+</body>
+
+</html>

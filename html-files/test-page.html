@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>pdf</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js">
+    </script>
+
+    <style>
+        .container {
+            width: 70%;
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 7px;
+        }
+
+        .card {
+            box-sizing: content-box;
+            width: 700px;
+            height: 150px;
+            padding: 30px;
+            border: 1px solid black;
+            font-style: sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        #makepdf {
+            width: 100%;
+        }
+
+        #button {
+            background-color: #4862FB;
+            border-radius: 5px;
+            padding: 15px;
+            color: white;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #24650b;
+        }
+
+        .hidded {
+            width: 90%;
+            border: 2px solid red;
+        }
+
+        #bultin {
+            background-color: #4caf50;
+            width: 100%;
+        }
+
+        .school-innfo {
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .student-info {
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .first-part {
+            flex-basis: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .second-part {
+            flex-basis: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .first-part p,
+        .second-part p {
+            font-size: 24px;
+            font-weight: bolder;
+        }
+
+        .first-part p span,
+        .second-part p span {
+            font-size: 19px;
+            font-weight: 600;
+
+        }
+
+        .table-note {
+            width: 90%;
+            margin: 10px auto 40px;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            padding: 9px 12px;
+            text-align: center;
+        }
+
+        table {
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .image {
+            width: 40%;
+            height: 80px;
+            margin: 50px 0 0 50px;
+        }
+
+        .image img {
+            height: 100%;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="makepdf">
+            <div id="Bultin">
+                <div class="student-info">
+                    <div class="first-part">
+
+                        <p>Nom et Prenom: <span class="student-name"></span> </p>
+                        <p>cne :<span class="student-cne"></span></p>
+                    </div>
+                    <div class="second-part">
+                        <p class="student-major">Filière : <span>GI</span> </p>
+                        <p class="student-year">Année scolaire :<span>2022/2023</span></p>
+                    </div>
+                </div>
+                <div class="table-note">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="head">Module</th>
+                                <th class="head">les éléments</th>
+                                <th class="head">Note d'élement </th>
+                                <th class="head">Note du module</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="4">Math 2</td>
+                            <tr>
+                                <td>Analyse numerique</td>
+                                <td class="an"></td>
+                                <td rowspan="3" class="tmath"></td>
+                            </tr>
+                            <tr>
+                                <td>Probabilty</td>
+                                <td class="proba"></td>
+                            </tr>
+                            <tr>
+                                <td>Statistique</td>
+                                <td class="stat"></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">structure donne et pro web</td>
+                            <tr>
+                                <td>S.D.</td>
+                                <td class="sd"></td>
+                                <td rowspan="2" class="tsd"></td>
+                            </tr>
+                            <tr>
+                                <td>WEB</td>
+                                <td class="web"></td>
+                            </tr>
+
+
+                            </tr>
+                            <tr>
+                                <td rowspan="3">B.D. et S.I.</td>
+                            <tr>
+                                <td>B.D.</td>
+                                <td class="bd"></td>
+                                <td rowspan="2" class="tbd"></td>
+                            </tr>
+                            <tr>
+                                <td>S.I.</td>
+                                <td class="si"></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">S.E. et Réseau</td>
+                            <tr>
+                                <td>S.E.</td>
+                                <td class="se"></td>
+                                <td rowspan="2" class="tse"></td>
+                            </tr>
+                            <tr>
+                                <td>Réseau</td>
+                                <td class="res"></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                                <th colspan="2">Total</th>
+                                <td class="total"></td>
+                                <td class="total1"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <button id="button">Generate PDF</button>
+        </div>
+
+
+        <script>
+            const htmlData = JSON.parse(localStorage.getItem("html"));
+            const dataUser = JSON.parse(localStorage.getItem("currentUser"));
+            console.log(dataUser);
+            document.querySelector('.an').innerHTML = htmlData.an;
+            document.querySelector('.proba').innerHTML = htmlData.rproba;
+            document.querySelector('.stat').innerHTML = htmlData.rstat;
+            const tmath = Math.floor(((htmlData.an + htmlData.rproba + htmlData.rstat) / 3) * 100) / 100;
+            document.querySelector('.tmath').innerHTML = tmath;
+
+            document.querySelector('.sd').innerHTML = htmlData.rsd;
+            document.querySelector('.web').innerHTML = htmlData.rweb;
+            const tsd = Math.floor(((htmlData.rsd + htmlData.rweb) / 2) * 100) / 100;
+            document.querySelector('.tsd').innerHTML = tsd;
+
+            document.querySelector('.bd').innerHTML = htmlData.rbd;
+            document.querySelector('.si').innerHTML = htmlData.rsi;
+            tbd = Math.floor(((htmlData.rbd + htmlData.rsi) / 2) * 100) / 100;
+            document.querySelector('.tbd').innerHTML = tbd;
+
+            document.querySelector('.se').innerHTML = htmlData.rse;
+            document.querySelector('.res').innerHTML = htmlData.rreseau;
+            tse = Math.floor(((htmlData.rse + htmlData.rreseau) / 2) * 100) / 100;
+            document.querySelector('.tse').innerHTML = tse;
+
+            document.querySelector('.total').innerHTML = Math.floor(((tmath + tsd + tbd + tse) / 4) * 100) / 100;
+            document.querySelector('.total1').innerHTML = Math.floor(((tmath + tsd + tbd + tse) / 4) * 100) / 100;
+
+            document.querySelector('.student-name').innerHTML = `${dataUser.firstName} ${dataUser.lastName}  `;
+            document.querySelector('.student-cne').innerHTML = `${dataUser.cne} `;
+            var button = document.getElementById("button");
+            var makepdf = document.getElementById("Bultin");
+            button.addEventListener("click", function () {
+                html2pdf().from(makepdf).save();
+            });
+        </script>
+</body>
+
+</html>

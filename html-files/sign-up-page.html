@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://kit.fontawesome.com/448fdde26a.js" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Gloria+Hallelujah&family=Grape+Nuts&family=Inter:wght@300&family=Lato:ital,wght@0,700;1,400&family=Montserrat:wght@600&family=Pacifico&family=Patrick+Hand&family=Permanent+Marker&family=Poppins&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --text-color: #5e5e5e;
+            --background-color: white;
+            --input: white;
+            --icon-txt: #bfbfbf;
+
+        }
+
+        .dark-mode {
+            --text-color: rgb(224, 224, 224);
+            --background-color: rgb(37, 37, 37);
+            --input: rgb(53, 53, 53);
+            --icon-txt: white;
+        }
+
+        body {
+            width: 100%;
+            background-color: var(--background-color);
+        }
+
+        header {
+            height: 80px;
+            width: 90%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        input {
+            background-color: var(--input);
+            color: var(--text-color);
+        }
+
+        header .nav-logo {
+            width: 30%;
+            height: 100%;
+            float: left;
+            margin-left: 10%;
+        }
+
+        header .nav-logo img {
+            height: 100%;
+        }
+
+        .container1 {
+            width: 100%;
+            margin: 10px auto 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .form-input {
+            padding-top: 40px;
+            flex-basis: 30%;
+            border: 2px solid #bfbfbf;
+            border-radius: 9px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 60px;
+            background-color: var(--background-color);
+        }
+
+        .container1 .form-input h1 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #6177FF;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .container1 .form-input p {
+            font-size: 14px;
+            color: #5e5e5e;
+            width: 100%;
+            text-align: center;
+        }
+
+        .feild .input-area input {
+            padding: 12px 0 12px 50px;
+            min-width: 400px;
+            max-width: 400px;
+            margin-top: 10px;
+            font-size: 16px;
+            border: 1px solid #bfbfbf;
+            border-radius: 5px;
+            outline: none;
+
+        }
+
+        .feild .input-area input::placeholder {
+            color: #bfbfbf;
+        }
+
+        input[type='submit'] {
+            padding: 10px 30px;
+            margin: 10px 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #6177FF;
+            border-radius: 5px;
+            background-color: #6177FF;
+            color: var(--background-color);
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type='submit']:hover {
+            background-color: var(--background-color);
+            color: #6177FF;
+        }
+
+        .login-link {
+            width: 100%;
+        }
+
+        .login-link p {
+            color: #5e5e5e;
+            font-size: 17px;
+            width: 100%;
+        }
+
+        .login-link p a {
+            text-decoration: none;
+            color: #6177FF;
+            font-weight: bold;
+        }
+
+        .input-area {
+            position: relative;
+            min-width: 400px;
+            max-width: 400px;
+        }
+
+        .input-area .user-icon {
+            position: absolute;
+            top: 40%;
+            left: 20px;
+            font-size: 18px;
+            color: #bfbfbf;
+        }
+
+        .input-area .faut-icon {
+            position: absolute;
+            top: 40%;
+            right: 20px;
+            font-size: 19px;
+            color: #ce3565;
+            display: none;
+        }
+
+        .input-area .good-icon {
+            position: absolute;
+            top: 40%;
+            right: 20px;
+            font-size: 19px;
+            color: #378006;
+            display: none;
+        }
+
+        .input-area .eye-icon,
+        .input-area .eye-icon2 {
+            position: absolute;
+            top: 40%;
+            right: 20px;
+            font-size: 19px;
+            color: #bfbfbf;
+        }
+
+        .feild.good .input-area .eye-icon,
+        .feild.good .input-area .eye-icon2 {
+            color: #378006;
+        }
+
+        .feild.faut .input-area .eye-icon,
+        .feild.faut .input-area .eye-icon2 {
+            color: #ce3565;
+        }
+
+        .feild.good .input-area .good-icon {
+            display: block;
+        }
+        .feild.good .input-area .faut-icon {
+            display: none;
+        }
+
+        .feild.faut .input-area .good-icon {
+            display: none;
+        }
+
+        .feild.faut .input-area .faut-icon {
+            display: block;
+        }
+
+        .erreurtext {
+            color: #ce3565;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .feild.faut .input-area input {
+            border-color: #ce3565;
+        }
+
+        .feild.good .input-area input {
+            border-color: #378006;
+        }
+
+        .conditions {
+            margin: 10px 0;
+        }
+
+        .conditions i {
+            font-size: 12px;
+        }
+
+        .conditions .check-icon {
+            display: none;
+        }
+
+        .conditions .cond {
+            margin-bottom: 6px;
+            position: relative;
+        }
+
+        .conditions .cond p {
+            margin-left: 20px;
+            text-align: left;
+        }
+        
+        .conditions .cond .icon-faute {
+            top: 22%;
+            left: 5px;
+            color: #cf3545;
+            display: none;
+            position: absolute;
+        }
+        .conditions .cond.faut .icon-faute {
+            display: block;
+
+        }
+
+        .conditions .cond.faut .check-icon {
+            display: none;
+        }
+        .conditions .cond .check-icon {
+            top: 22%;
+            left: 5px;
+            color: #2ecc71;
+            position: absolute;
+            display: block;
+        }
+        
+
+        @media (max-width: 1000px) {
+            .container1 {
+                width: 70%;
+            }
+
+            .form-input {
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-logo">
+            <img src="../images/Université_Ibn_Zohr-removebg-preview.png" alt="est agadir logo">
+        </div>
+    </header>
+    <section class="container1">
+        <form action="" class="form-input">
+            <h1>Creer votre compte etudiant!</h1>
+            <p>creer votre compte etudiant et gerer facilement votre bulltin de note.</p>
+            <div class="feild first-name">
+                <div class="input-area">
+                    <i class="user-icon fa-solid fa-user"></i>
+                    <i class="faut-icon fa-solid fa-xmark"></i>
+                    <i class="good-icon fa-solid fa-check"></i>
+                    <input class="input-first-name" type="text" placeholder="Entrez votre prenom.">
+                </div>
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild last-name">
+                <div class="input-area">
+                    <i class=" user-icon fa-solid fa-user"></i>
+                    <i class="faut-icon fa-solid fa-xmark"></i>
+                    <i class="good-icon fa-solid fa-check"></i>
+                    <input class="input-last-name" type="text" placeholder="Entrez votre nom.">
+                </div>
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild mail">
+                <div class="input-area">
+                    <i class="user-icon fa-solid fa-envelope"></i>
+                    <i class="faut-icon fa-solid fa-xmark"></i>
+                    <i class="good-icon fa-solid fa-check"></i>
+                    <input class="input-mail" type="email" placeholder="Entrez votre e-mail.">
+                </div>
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild cne">
+                <div class="input-area">
+                    <i class="user-icon fa-solid fa-user"></i>
+                    <i class="faut-icon fa-solid fa-xmark"></i>
+                    <i class="good-icon fa-solid fa-check"></i>
+                    <input class="input-cne" type="text" placeholder="Entrez votre cne.">
+                </div>
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild password">
+                <div class="input-area">
+                    <i class="user-icon fa-solid fa-lock"></i>
+                    <i class="eye-icon fa-solid fa-eye"></i>
+                    <input class="input-password" type="password" placeholder="Entrez votre password.">
+                </div>
+                <div class="erreurtext"></div>
+            </div>
+            <div class="feild confirme-pass">
+                <div class="input-area">
+                    <i class="user-icon fa-solid fa-lock"></i>
+                    <i class="eye-icon2 fa-solid fa-eye"></i>
+                    <input class="input-confirme-pass" type="password" placeholder="Confirmer votre password.">
+                </div>
+                <div class="erreurtext"></div>
+            </div>
+            <div class="conditions ">
+                <div class="cond-1 cond faut">
+                    <i class="icon-faute fa-sharp fa-solid fa-xmark"></i>
+                    <i class="check-icon fa-solid fa-check"></i>
+                    <p>at least 8 caracters </p>
+                </div>
+                <div class="cond-2 cond faut">
+                    <i class="icon-faute  fa-sharp fa-solid fa-xmark"></i>
+                    <i class="check-icon fa-solid fa-check"></i>
+                    <p>at least one upper letter</p>
+                </div>
+                <div class="cond-3 cond faut">
+                    <i class="icon-faute fa-sharp fa-solid fa-xmark"></i>
+                    <i class="check-icon fa-solid fa-check"></i>
+                    <p>at least one number</p>
+                </div>
+            </div>
+            <div class="submit-btn">
+                <input type="submit" value="sign up">
+            </div>
+            <div class="login-link">
+                <p>vous avez deja un compte ? <a href="login.html">login</a></p>
+            </div>
+        </form>
+
+    </section>
+    <script>
+        const dataBase = JSON.parse(localStorage.getItem("base")) || [{
+            firstName: 'reda',
+            lastName: 'elkhayati',
+            userName: 'reda.elkhayati',
+            cne : 'jM107399' ,
+            email: 'redaredael@gmail.com',
+            password: 'redaREDA2004'
+        },
+        {
+            firstName: 'mostapha',
+            lastName: 'bayi',
+            cne : 'jM107389' ,
+            userName: 'mostapha.bayi',
+            email: 'skw9izo6@gmail.com',
+            password: 'MostaphaLetsGoo@2004'
+        }];
+        const form = document.querySelector('form');
+
+        const firstNameFeild = form.querySelector('.first-name');
+        const firstNameInput = firstNameFeild.querySelector('.input-first-name');
+        const firstNameerreur = firstNameFeild.querySelector('.erreurtext');
+
+        const lastNameFeild = form.querySelector('.last-name');
+        const lastNameInput = lastNameFeild.querySelector('.input-last-name');
+        const lastNameerreur = lastNameFeild.querySelector('.erreurtext');
+
+        const emailFeild = form.querySelector('.mail');
+        const emailInput = emailFeild.querySelector('.input-mail');
+        const emailerreur = emailFeild.querySelector('.erreurtext');
+
+        const cneFeild = form.querySelector('.cne');
+        const cneInput = cneFeild.querySelector('.input-cne');
+        const cneerreur = cneFeild.querySelector('.erreurtext');
+
+        const passFeild = form.querySelector('.password');
+        const passInput = passFeild.querySelector('.input-password');
+        const passerreur = passFeild.querySelector('.erreurtext');
+
+        const confirmepassFeild = form.querySelector('.confirme-pass');
+        const confirmepassInput = confirmepassFeild.querySelector('.input-confirme-pass');
+        const confirmepasserreur = confirmepassFeild.querySelector('.erreurtext');
+
+        
+        passInput.onkeyup = () => {
+            checkPassword();
+        }
+        function checkPassword() {
+            let pattern = [
+                /^(?=.*\w).{8,}$/,
+                /[A-Z]/,
+                /[0-9]/,
+            ];
+            let d = 0;
+            if (passInput.value.trim() === '') {
+                passerreur.innerHTML = 'votre mot de passe ne peut pas etre vide';
+                passFeild.classList.add('faut');
+                return;
+            }
+            for (let i = 0; i < pattern.length; i++) {
+                const condition = document.querySelector(`.cond-${i + 1}`);
+                if (!passInput.value.trim().match(pattern[i])) {
+                    condition.classList.add('faut');
+                    passerreur.innerHTML = 'votre mot de passe est faible';
+                    passFeild.classList.add('faut');
+                } else {
+                    condition.classList.add('good');
+                    condition.classList.remove('faut');
+                    d++;
+                }
+            }
+            if (d >= pattern.length) {
+                passerreur.innerHTML = '';
+                passFeild.classList.remove('faut');
+                return 1;
+            }
+        }
+        function checkconfirmepass() {
+            if (confirmepassInput.value.trim() !== passInput.value.trim()) {
+                confirmepasserreur.innerHTML = 'mot de passe incorrecte';
+                confirmepassFeild.classList.add('faut');
+            } else {
+                confirmepasserreur.innerHTML = '';
+                confirmepassFeild.classList.remove('faut');
+                return 1;
+            }
+        }
+        function checkCne() {
+            if (cneInput.value.trim() === '') {
+                cneerreur.innerHTML = 'votre cne ne peut pas etre vide';
+                cneFeild.classList.add('faut');
+                return 0;
+            } else {
+                cneerreur.innerHTML = '';
+                cneFeild.classList.remove('faut');
+            }
+            return 1;
+        }
+        function checkUserName() {
+            let User = firstNameInput.value.trim() + '.' + lastNameInput.value.trim();
+
+            for (let i = 0; i < dataBase.length; i++) {
+                if (User.replace(/\s/g,"").toLowerCase() === dataBase[i].userName) {
+                    firstNameerreur.innerHTML = 'Ce prenom deja existe';
+                    firstNameFeild.classList.add('faut');
+                    lastNameerreur.innerHTML = 'Ce nom deja existe';
+                    lastNameFeild.classList.add('faut');
+                    return 0;
+                }
+            }
+            if (firstNameInput.value.trim() === '') {
+                firstNameerreur.innerHTML = 'votre prenom ne peut pas etre vide';
+                firstNameFeild.classList.add('faut');
+                return 0;
+            } else {
+                firstNameerreur.innerHTML = '';
+                firstNameFeild.classList.remove('faut');
+            }
+            if (lastNameInput.value.trim() === '') {
+                lastNameerreur.innerHTML = 'votre nom ne peut pas etre vide';
+                lastNameFeild.classList.add('faut');
+                return 0;
+            } else {
+                lastNameerreur.innerHTML = '';
+                lastNameFeild.classList.remove('faut');
+            }
+            return 1;
+        }
+        function checkMail() {
+            let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!emailInput.value.match(pattern)) {
+                if (emailInput.value.trim().toLowerCase() === '') {
+                    emailerreur.innerHTML = 'votre e-mail ne peut pas etre vide';
+                    emailFeild.classList.add('faut');
+                } else {
+                    emailerreur.innerHTML = 'svp entrez un vrai email';
+                    emailFeild.classList.add('faut');
+                }
+            } else {
+                for (let i = 0; i < dataBase.length; i++) {
+                    if (emailInput.value.trim().toLowerCase() === dataBase[i].email) {
+                        emailerreur.innerHTML = 'e-mail deja existe';
+                        emailFeild.classList.add('faut');
+                        return 0;
+                    }
+                }
+                emailerreur.innerHTML = '';
+                emailFeild.classList.remove('faut');
+                return 1;
+            }
+        }
+
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            checkCne();
+            checkPassword();
+            if (firstNameInput.value.trim() === '') {
+                firstNameerreur.innerHTML = 'votre prenom ne peut pas etre vide';
+                firstNameFeild.classList.add('faut');
+            } else if (checkUserName() == 1) {
+                firstNameerreur.innerHTML = '';
+                firstNameFeild.classList.remove('faut');
+            } else {
+                firstNameerreur.innerHTML = 'ce prenom deja existe';
+                firstNameFeild.classList.add('faut');
+            }
+            if (lastNameInput.value.trim() === '') {
+                lastNameerreur.innerHTML = 'votre nom ne peut pas etre vide';
+                lastNameFeild.classList.add('faut');
+            } else if (checkUserName() == 1) {
+                lastNameerreur.innerHTML = '';
+                lastNameFeild.classList.remove('faut');
+            } else {
+                lastNameerreur.innerHTML = 'Ce nom deja existe';
+                lastNameFeild.classList.add('faut');
+            }
+            if (passInput.value.trim() === '') {
+                passerreur.innerHTML = 'votre mot de passe ne peut pas etre vide';
+                passFeild.classList.add('faut');
+            } else if (checkUserName() == 1) {
+                passerreur.innerHTML = '';
+                passFeild.classList.remove('faut');
+                checkconfirmepass();
+            }
+            checkMail();
+            firstNameInput.onkeyup = () => {
+                if (firstNameInput.value.trim() === '') {
+                    firstNameerreur.innerHTML = 'votre prenom ne peut pas etre vide';
+                    firstNameFeild.classList.add('faut');
+                } else if (checkUserName() == 1) {
+                    firstNameerreur.innerHTML = '';
+                    firstNameFeild.classList.remove('faut');
+                } else {
+                    firstNameerreur.innerHTML = 'ce prenom deja existe';
+                    firstNameFeild.classList.add('faut');
+                }
+            }
+            lastNameInput.onkeyup = () => {
+                if (lastNameInput.value.trim() === '') {
+                    lastNameerreur.innerHTML = 'votre nom ne peut pas etre vide';
+                    lastNameFeild.classList.add('faut');
+                } else if (checkUserName() == 1) {
+                    lastNameerreur.innerHTML = '';
+                    lastNameFeild.classList.remove('faut');
+                } else {
+                    lastNameerreur.innerHTML = 'Ce nom deja existe';
+                    lastNameFeild.classList.add('faut');
+                }
+            }
+            emailInput.onkeyup = () => {
+                checkMail();
+            }
+            passInput.onkeyup = () => {
+                checkPassword();
+            }
+            confirmepassInput.onkeyup = () => {
+                checkconfirmepass();
+            }
+            cneInput.onkeyup = () => {
+                checkCne();
+            }
+            if (checkCne() === 1 && checkMail() === 1 && checkPassword() === 1 && checkUserName() === 1 && checkconfirmepass() === 1) {
+                let firstName = firstNameInput.value;
+                let lastName = lastNameInput.value;
+                let password = passInput.value;
+                let userName = (firstName.trim() + '.' + lastName.trim()).replace(/\s/g,"");
+                let email = emailInput.value.trim().toLowerCase();
+                let cne = cneInput.value.trim();
+                dataBase.push({ firstName, lastName,cne,userName, email, password });
+                localStorage.setItem("base", JSON.stringify(dataBase));
+                setTimeout(()=>{
+                    window.location.href = "login.html";
+                },500);
+
+            }
+        }
+        const eyeIcon = document.querySelector(".eye-icon");
+        const eyeIcon2 = document.querySelector(".eye-icon2");
+        eyeIcon.onclick = () => {
+            if (passInput.type === 'text') {
+                passInput.type = 'password';
+            } else {
+                passInput.type = 'text';
+            }
+        }
+        eyeIcon2.onclick = () => {
+            if (confirmepassInput.type === 'text') {
+                confirmepassInput.type = 'password';
+            } else {
+                confirmepassInput.type = 'text';
+            }
+        }
+        let theme = localStorage.getItem('theme');
+        if (theme === 'light' && document.body.classList.contains('dark-mode')) {
+            document.body.classList.remove('dark-mode');
+        }
+        else if (theme === 'dark' && !document.body.classList.contains('dark-mode')) {
+            document.body.classList.add('dark-mode');
+        }
+
+        window.addEventListener('storage', (event) => {
+            const theme = event.newValue;
+            if (theme === 'light' && document.body.classList.contains('dark-mode')) {
+                document.body.classList.remove('dark-mode');
+            }
+            else if (theme === 'dark' && !document.body.classList.contains('dark-mode')) {
+                document.body.classList.add('dark-mode');
+            }
+        });
+    </script>
+</body>
+
+</html>
